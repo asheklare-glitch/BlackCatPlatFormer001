@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         // 더블 점프 시 아래로 떨어지는 속도를 없애고 점프력을 온전히 받게 함
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // 힘을 가하는 방식으로 변경
-        anim.SetTrigger("JumpTrigger");
+        anim.SetTrigger("Jump");
     }
 
     private void OnDrawGizmos()
