@@ -8,6 +8,7 @@ TagManager:
   - Fish
   - Deadzone
   - DeathZone
+  - CaveEntrance
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - Water
   - UI
   - ground
-  - 
-  - 
+  - mid
+  - arrow
   - 
   - 
   - 
@@ -53,6 +54,9 @@ TagManager:
     locked: 0
   - name: front
     uniqueID: 2636538797
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 1979225395
     locked: 0
   m_RenderingLayers:
   - Default

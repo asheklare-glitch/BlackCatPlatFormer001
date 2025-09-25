@@ -16,6 +16,14 @@ public class PlayerController : MonoBehaviour
     public UIManager uiManager;
     public GameObject gameOverPanel;
 
+    [Header("Dash Settings")]
+    public float dashSpeed = 15f;      // 대시 속도
+    public float dashDuration = 0.2f;    // 대시 지속 시간
+    public float dashCooldown = 1f;      // 대시 쿨타임
+
+    private bool isDashing = false;      // 현재 대시 중인지 확인
+    private float nextDashTime = 0f;     // 다음 대시가 가능한 시간
+
     private bool isGrounded; // 땅에 닿았는지 확인하는 변수
     public Transform groundCheck; // 땅을 확인할 위치 (플레이어 발밑)
     public float groundCheckDistance = 0.2f; // 땅을 확인하는 레이저의 길이
@@ -42,6 +50,19 @@ public class PlayerController : MonoBehaviour
     {
         CheckIfGrounded();
         if (currentHealth <= 0) return;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time >= nextDashTime)
+        {
+            StartCoroutine(Dash());
+        }
+
+        // --- 대시 중에는 좌우 이동을 막도록 수정 ---
+        if (isDashing)
+        {
+            return; // 대시 중이라면 아래의 이동 로직을 실행하지 않음
+        }
+
+
         float move = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
 
@@ -86,6 +107,29 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("Jump");
     }
 
+    private IEnumerator Dash()
+    {
+        // 1. 대시 시작 및 상태 설정
+        isDashing = true;
+        nextDashTime = Time.time + dashCooldown; // 쿨타임 설정
+        anim.SetTrigger("DashTrigger"); // 애니메이션 트리거
+
+        // 2. 대시 중 물리 효과 처리
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f; // 중력을 잠시 없애서 직선으로 날아가게 함
+        float dashDirection = sr.flipX ? -1f : 1f; // 바라보는 방향 확인
+        rb.linearVelocity = new Vector2(dashDirection * dashSpeed, 0f); // 해당 방향으로 빠르게 이동
+
+        // 3. 대시 지속 시간만큼 대기
+        yield return new WaitForSeconds(dashDuration);
+
+        // 4. 대시 종료 및 원래 상태로 복귀
+        rb.gravityScale = originalGravity; // 원래 중력으로 복구
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // 대시 후 미끄러지지 않게 속도 초기화
+        isDashing = false;
+    }
+
+
     private void OnDrawGizmos()
     {
         if (groundCheck != null)
@@ -106,15 +150,10 @@ public class PlayerController : MonoBehaviour
     // Trigger Collider에 다른 Collider가 들어왔을 때 호출되는 함수
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // 들어온 Collider의 태그가 "Fish" 라면
-        if (other.gameObject.CompareTag("Fish"))
-        {
-            Heal(1); // 체력을 1 회복
-            Destroy(other.gameObject); // 부딪힌 생선 오브젝트를 파괴(삭제)
-        }
+       
 
         // 들어온 Collider의 태그가 "DeathZone" 이라면
-        else if (other.gameObject.CompareTag("DeathZone"))
+      if (other.gameObject.CompareTag("DeathZone"))
         {
             currentHealth = 0; // 즉시 체력을 0으로 만듦
             UpdateHealthUI();  // 체력 UI 업데이트
