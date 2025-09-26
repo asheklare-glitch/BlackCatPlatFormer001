@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6940cdda447048efa58605bd546f9920, type: 3}
+  m_Name: ezgif-1e6aa3c59b1d1a
+  m_EditorClassIdentifier: 
+  Frames:
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: eab5fb296eeb31449bc3019cccafa9d0, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: 2f0130fc7f8585242a14a7be935dcb3c, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: c106f9511daa4a348be2a93fa120a60c, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: d27c26aea0e808440b896d21cf9e76c3, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: dc570d90f3c9b0a4bbb91beb68de208d, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: 4596fdf8c4fd4064996aa7045ee90044, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: 2690c5fa8a310e14d8c98bba26d351d9, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: 217303517d9f0d042be15cb115632fff, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: 78f49bfed60f89a4eadc5725d7f7daa1, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: eddc83a4fa8f7604bbc3ed0e27779a95, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: 58257b52d209c44498e1695a1592728b, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: 4b033915f516a924f9a4c4bcac39dfa5, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: cc95d705fe6a8674f8d72ebd07fc7961, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: 88c046e63513d0a4e99d4556c7888d6f, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: 71bb1fb0508cc194a9e81b81ac2dfd3a, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: 94148d1e7abb25f43bbcc6e05de90c40, type: 3}
+  - DelayInMs: 200
+    Sprite: {fileID: 21300000, guid: eb210441765fb7b42aefdcd34780b973, type: 3}
